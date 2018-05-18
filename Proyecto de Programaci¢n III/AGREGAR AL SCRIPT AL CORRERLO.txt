@@ -1,0 +1,35 @@
+DELIMITER // 
+		create procedure selectProductos()
+			begin 
+			select * from producto;
+              end 
+//
+
+DELIMITER //
+	create procedure selectProducto(
+    in _idproducto int 
+    )
+    begin
+    select * from producto where idproducto = _idproducto; 
+    end
+// 
+
+
+
+DELIMITER //
+		create procedure selectPedidos()
+			begin
+			SELECT pedido.idPedido, pedido.fecha, pedido.hora, pedido.cantidad, pedido.cliente, producto.nombre, pedido.estado FROM pedido INNER JOIN producto ON pedido.producto_idproducto = producto.idproducto where pedido.estado = 0;
+			end
+//
+
+
+
+DELIMITER //
+	create procedure selectPedido(
+    in _idpedido int
+    )
+    begin
+    SELECT pedido.idPedido, pedido.fecha, pedido.hora, pedido.cantidad, pedido.cliente, producto.nombre, pedido.estado FROM pedido INNER JOIN producto ON pedido.producto_idproducto = producto.idproducto where pedido.idpedido = pedido._idpedido AND pedido.estado = 0;	
+    end
+//
