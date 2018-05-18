@@ -13,7 +13,7 @@ import java.sql.*;
 public class ConexionMySQL {
     private static String servidor = "jdbc:mysql://localhost:3306/iCafe";
     private static String user = "root";
-    private static String pass = "hs100716";
+    private static String pass = "musun2017";
     private static String driver = "com.mysql.jdbc.Driver";
     private static Connection conexion;
     

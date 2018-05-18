@@ -25,12 +25,7 @@
         <link type="text/css" rel="stylesheet" href="css/style.css" />
         <meta charset="UTF-8">
         <title>Menu - iCafe</title>
-
-
-
         <link rel="stylesheet" href="css/style.css">
-
-
     </head>
 
     <body>
@@ -58,7 +53,6 @@
 
                         <!-- Collapse nav button -->
                         <div class="nav-collapse">
-                            <span></span>
                         </div>
 
                         <!-- /Collapse nav button -->
@@ -66,10 +60,9 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li><a href="#Menu">Menu</a></li>
                         <li><a href="#Promociones">Promociones</a></li>
-
                         <!-- /Main navigation -->
-
-                </div>
+                    </ul>
+                </div>                
             </nav>
             <!-- /Nav -->
 
