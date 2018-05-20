@@ -245,7 +245,7 @@ and open the template in the editor.
                                                 <th scope="col">Cantidad</th>
                                                 <th scope="col">Categoría Producto</th>
                                                 <th scope="col">Tipo Producto</th>
-                                                
+                                                <th scope="col">Imagen</th>
                                             </tr>
                                             </thead>
                                             <%
@@ -263,6 +263,7 @@ and open the template in the editor.
                                                 <td><%=rs.getString(5)%></td>
                                                 <td><%=rs.getString(9)%></td>
                                                 <td><%=rs.getString(7)%></td>
+                                                <td><img src="img/<%=rs.getString(8)%>" width="100" height="100"> </td>
                                             </tr>
                                             <%
                                                     }

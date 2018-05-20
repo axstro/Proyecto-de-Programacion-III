@@ -232,6 +232,7 @@ and open the template in the editor.
                                             <option value="Promocion">Promoción</option>
                                         </select><br><br>
                                         <textarea class="input" name="descripcion" placeholder="Descripción" maxlength="200" required></textarea>
+                                        <input  type="file"  name="imagen">  
                                         <input type="submit" value="Registrar Producto" class="main-btn">
                                     </form>
 

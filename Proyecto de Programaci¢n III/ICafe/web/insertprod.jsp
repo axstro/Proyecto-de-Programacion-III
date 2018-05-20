@@ -24,11 +24,12 @@
             int cantidad = Integer.parseInt(request.getParameter("cantidad"));
             int categoria = Integer.parseInt(request.getParameter("categoria"));
             String tipo = request.getParameter("promocion");
+            String imagen = request.getParameter("imagen");
             
             ConexionMySQL conexion = new ConexionMySQL();
             Connection conn = conexion.getConexion();
             Statement st;
-            String sql = "INSERT INTO producto(nombre, descripcion, precio, cantidad, catproducto_idcatproducto, tipo) VALUES ('" + nombre + "','" + descripcion + "'," + precio + "," + cantidad + "," + categoria + ", '"+tipo+"')";
+            String sql = "INSERT INTO producto(nombre, descripcion, precio, cantidad, catproducto_idcatproducto, tipo, imagen) VALUES ('" + nombre + "','" + descripcion + "'," + precio + "," + cantidad + "," + categoria + ", '"+tipo+"', '"+imagen+"')";
             try {
                 st = conn.createStatement();
                 st.executeUpdate(sql);

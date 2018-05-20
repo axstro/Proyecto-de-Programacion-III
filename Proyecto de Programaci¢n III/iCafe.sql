@@ -12,6 +12,7 @@ use icafe;
 #
 # Structure for the `catempleado` table : 
 #
+use icafe;
 
 CREATE TABLE `catempleado` (
   `idCatEmpleado` int(11) NOT NULL AUTO_INCREMENT,
@@ -60,6 +61,7 @@ CREATE TABLE `producto` (
   `cantidad` int(11) NOT NULL,
   `catproducto_idcatproducto` int(11) NOT NULL,
   `tipo` varchar(50) NOT NULL,
+  `imagen` varchar(500) NOT NULL,
   PRIMARY KEY (`idProducto`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
@@ -132,21 +134,21 @@ COMMIT;
 # Data for the `producto` table  (LIMIT 0,500)
 #
 
-INSERT INTO `producto` (`idProducto`, `nombre`, `descripcion`, `precio`, `cantidad`, `catproducto_idcatproducto`, `tipo`) VALUES 
-  (1,'Café Espresso','Es la verdadera esencia del café en la forma más concentrada.',2.00, 300,1, 'Promoción'),
-  (2,'Cappuccino Espresso','Nuestra carga de espresso acompañada con abundante espuma de leche',2.50, 300,1, 'Normal'),
-  (3,'Café Latte','Leche cremosa y espresso, ligeramente recubierto con suave espuma de leche.',2.75, 300,1, 'Promoción'),
-  (4,'Vanilla Latte','Delicioso café espresso con leche caliente y dulces toques de vainilla. Todo esto cubierto con una sutil capa de espuma de leche',2.75, 300,1, 'Normal'),
-  (5,'Café Mocha','Delicioso e intenso chocolate, espresso y leche cremosa, cubierto con crema batida.',2.90, 300,1, 'Normal'),
-  (6,'Café Mocha Blanco','Irresistible combinación de mocha blanco con nuestra carga de espresso y leche caliente, cubierto con crema batida',3.00, 300,1, 'Normal'),
-  (7,'Café Espresso Doble','Es la verdadera esencia del café en la forma más concentrada al doble.',2.00, 300,1, 'Promoción'),
-  (8,'Green Tea','Delicioso té que envuelve los usos milenarios de la cultura asiática',1.90, 300,2, 'Normal'),
-  (9,'Coca Cola','Bebida Carbonata',1.00, 300,3, 'Normal'),
-  (10,'Pepsi','Bebida Carbonata',1.00, 300,3, 'Normal'),
-  (11,'Cupcake de Nutella','Exquisito para los amantes del chocolate',0.50, 300,4, 'Normal'),
-  (12,'Cupcake de manzana al caramelo','Rellenos de crema de caramelo cubiertos con buttercream de toffee y decorados con salsa de caramelo y chocolatinas.',0.60, 300,4, 'Promoción'),
-  (13,'Pizza calzone','Es una especialidad de la cocina italiana originaria de Nápoles',3.20, 100,6, 'Normal'),
-  (14,'Sándwich de Pollo','Delicioso sándwich con pollo a tu gusto',2.90, 100,6, 'Normal');
+INSERT INTO `producto` (`idProducto`, `nombre`, `descripcion`, `precio`, `cantidad`, `catproducto_idcatproducto`, `tipo`, `imagen`) VALUES 
+  (1,'Café Espresso','Es la verdadera esencia del café en la forma más concentrada.',2.00, 300,1, 'Promoción', 'CafeEspresso.jpg'),
+  (2,'Cappuccino Espresso','Nuestra carga de espresso acompañada con abundante espuma de leche',2.50, 300,1, 'Normal', 'CappuccinoEspresso.jpg' ),
+  (3,'Café Latte','Leche cremosa y espresso, ligeramente recubierto con suave espuma de leche.',2.75, 300,1, 'Promoción', 'CafeLatte.jpg'),
+  (4,'Vanilla Latte','Delicioso café espresso con leche caliente y dulces toques de vainilla. Todo esto cubierto con una sutil capa de espuma de leche',2.75, 300,1, 'Normal', 'VanillaLatte.jpg'),
+  (5,'Café Mocha','Delicioso e intenso chocolate, espresso y leche cremosa, cubierto con crema batida.',2.90, 300,1, 'Normal', 'CafeMocha.jpg'),
+  (6,'Café Mocha Blanco','Irresistible combinación de mocha blanco con nuestra carga de espresso y leche caliente, cubierto con crema batida',3.00, 300,1, 'Normal', 'CafeMochaBlanco.jpg'),
+  (7,'Café Espresso Doble','Es la verdadera esencia del café en la forma más concentrada al doble.',2.00, 300,1, 'Promoción', 'CafeEspressoDoble.jpg'),
+  (8,'Green Tea','Delicioso té que envuelve los usos milenarios de la cultura asiática',1.90, 300,2, 'Normal', 'GreenTea.jpg'),
+  (9,'Coca Cola','Bebida Carbonata',1.00, 300,3, 'Normal', 'CocaCola.jpg'),
+  (10,'Pepsi','Bebida Carbonata',1.00, 300,3, 'Normal', 'Pepsi.jpg'),
+  (11,'Cupcake de Nutella','Exquisito para los amantes del chocolate',0.50, 300,4, 'Normal', 'CupcakedeNutella.jpg'),
+  (12,'Cupcake de manzana al caramelo','Rellenos de crema de caramelo cubiertos con buttercream de toffee y decorados con salsa de caramelo y chocolatinas.',0.60, 300,4, 'Promoción', 'Cupcakedemanzanaalcaramelo.jpg'),
+  (13,'Pizza calzone','Es una especialidad de la cocina italiana originaria de Nápoles',3.20, 100,6, 'Normal', 'Pizzacalzone.jpg'),
+  (14,'Sándwich de Pollo','Delicioso sándwich con pollo a tu gusto',2.90, 100,6, 'Normal', 'SandwichdePollo.jpg');
 
 COMMIT;
 
@@ -207,6 +209,4 @@ DELIMITER //
     end
 //
 
-select * from pedido;
 
- 

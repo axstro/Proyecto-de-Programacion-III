@@ -64,7 +64,8 @@
                 int cant = Integer.parseInt(request.getParameter("cantidad"));
                 int cat = Integer.parseInt(request.getParameter("categoria"));
                 String tipo = request.getParameter("promocion");
-                sql = "UPDATE producto SET nombre='" + nombre + "', descripcion='" + descripprod + "', precio='" + precio + "', cantidad='" + cant + "', catproducto_idcatproducto='" + cat + "', tipo='"+tipo+"' where idProducto=" + idprod;
+                String imagen = request.getParameter("imagen");
+                sql = "UPDATE producto SET nombre='" + nombre + "', descripcion='" + descripprod + "', precio='" + precio + "', cantidad='" + cant + "', catproducto_idcatproducto='" + cat + "', tipo='"+tipo+"', imagen='"+ imagen +"' where idProducto=" + idprod;
                 try {
                     st = conn.createStatement();
                     st.executeUpdate(sql);

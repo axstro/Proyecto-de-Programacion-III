@@ -203,6 +203,9 @@
                                                         <input type="text" name="descripcion" class="input" value="<%= rs.getString(3)%>" required>
                                                         <input type="text" name="precio" class="input" value="<%= rs.getString(4)%>" required>
                                                         <input type="text" name="cantidad" class="input" value="<%= rs.getString(5)%>" required>
+                                                        <img src="img/<%=rs.getString(8)%>" width="200" height="200">
+                                                        <input type="file" name="imagen" src="<%=rs.getString(8)%>" accept=".jpg, .jpeg, .png"> 
+                                                        
                                                         <%
                                                                 }
                                                             } catch (SQLException ex) {
@@ -232,6 +235,7 @@
                                                             <option value="Normal">Normal</option>
                                                             <option value="Promocion">Promoción</option>
                                                         </select><br><br>
+                                                        
                                                         <input type="submit" value="Actualizar Producto" class="main-btn">
                                                     </form>
                                                     <!-- Fin a la creación del formulario Actualizar Producto-->
