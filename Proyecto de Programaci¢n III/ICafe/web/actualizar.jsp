@@ -38,7 +38,8 @@
                 String usuario = request.getParameter("usuario");
                 String contra = request.getParameter("contra");
                 int categoria = Integer.parseInt(request.getParameter("categoria"));
-                sql = "UPDATE usuario SET nombres='" + nombres + "', apellidos='" + apellidos + "', dui='" + dui + "', nit='" + nit + "', tel1='" + tel1 + "', tel2='" + tel2 + "', direccion='" + direccion + "', usuario='" + usuario + "', contraseña='" + contra + "', catempleado_idcatempleado='" + categoria + "' where idUsuario=" + uid;
+                String tipo = request.getParameter("tipo");
+                sql = "UPDATE usuario SET nombres='" + nombres + "', apellidos='" + apellidos + "', dui='" + dui + "', nit='" + nit + "', tel1='" + tel1 + "', tel2='" + tel2 + "', direccion='" + direccion + "', usuario='" + usuario + "', contraseña='" + contra + "', catempleado_idcatempleado='" + categoria + "', tipo='" + tipo + "' where idUsuario=" + uid;
                 try {
                     st = conn.createStatement();
                     st.executeUpdate(sql);
@@ -54,8 +55,8 @@
         </script>
         <%
             }
-                
-            if(id ==2 ){
+
+            if (id == 2) {
 
                 String idprod = request.getParameter("id_producto");
                 String nombre = request.getParameter("nombre");
@@ -65,7 +66,7 @@
                 int cat = Integer.parseInt(request.getParameter("categoria"));
                 String tipo = request.getParameter("promocion");
                 String imagen = request.getParameter("imagen");
-                sql = "UPDATE producto SET nombre='" + nombre + "', descripcion='" + descripprod + "', precio='" + precio + "', cantidad='" + cant + "', catproducto_idcatproducto='" + cat + "', tipo='"+tipo+"', imagen='"+ imagen +"' where idProducto=" + idprod;
+                sql = "UPDATE producto SET nombre='" + nombre + "', descripcion='" + descripprod + "', precio='" + precio + "', cantidad='" + cant + "', catproducto_idcatproducto='" + cat + "', tipo='" + tipo + "', imagen='" + imagen + "' where idProducto=" + idprod;
                 try {
                     st = conn.createStatement();
                     st.executeUpdate(sql);
@@ -79,14 +80,14 @@
             alert("Producto Actualizado");
             window.location = 'mostrar.jsp';
         </script>
-<%
+        <%
             }
 
-            if(id == 3) {
+            if (id == 3) {
                 String idcatempleado = request.getParameter("id_catemp");
                 String nombrecatemp = request.getParameter("nombre");
                 String descripcatemp = request.getParameter("descripcion");
-                sql = "UPDATE catempleado SET nombre='" + nombrecatemp+ "', descripcion='" + descripcatemp + "' where idCatEmpleado=" + idcatempleado;
+                sql = "UPDATE catempleado SET nombre='" + nombrecatemp + "', descripcion='" + descripcatemp + "' where idCatEmpleado=" + idcatempleado;
                 try {
                     st = conn.createStatement();
                     st.executeUpdate(sql);
@@ -100,14 +101,14 @@
             alert("Cat. Emp. Actualizada");
             window.location = 'mostrar.jsp';
         </script>
-<%
+        <%
             }
-            
-            if(id ==4 ){
+
+            if (id == 4) {
                 String idprom = request.getParameter("idProm");
                 String nombre = request.getParameter("nombre");
                 String descripcion = request.getParameter("descripcion");
-                sql = "UPDATE promociones SET nombre='" +nombre+ "', descripcion='" +descripcion+ "' where idPromocion=" + idprom;
+                sql = "UPDATE promociones SET nombre='" + nombre + "', descripcion='" + descripcion + "' where idPromocion=" + idprom;
                 try {
                     st = conn.createStatement();
                     st.executeUpdate(sql);
@@ -121,13 +122,13 @@
             alert("Promoción Actualizada");
             window.location = 'mostrar.jsp';
         </script>
-<%
+        <%
             }
             if (id == 5) {
                 String idcat = request.getParameter("id_catprod");
                 String nombrescat = request.getParameter("nombres");
                 String descripcat = request.getParameter("descripcion");
-                sql = "UPDATE catproducto SET nombres='" +nombrescat+ "', descripcion='" +descripcat+ "' where idCatProducto=" + idcat;
+                sql = "UPDATE catproducto SET nombres='" + nombrescat + "', descripcion='" + descripcat + "' where idCatProducto=" + idcat;
                 try {
                     st = conn.createStatement();
                     st.executeUpdate(sql);
@@ -141,9 +142,9 @@
             alert("Cat. Prod. Actualizada");
             window.location = 'mostrar.jsp';
         </script>
-<%
+        <%
             }
-           if (id == 6) {
+            if (id == 6) {
                 String idpedido = request.getParameter("idpedido");
                 sql = "UPDATE pedido SET estado = 1 where idPedido=" + idpedido;
                 try {
@@ -156,13 +157,12 @@
                 }
 
 
-         %>
-         <script>
+        %>
+        <script>
             alert("Pedido Entregado");
             window.location = 'mostrarpedidos.jsp';
         </script>
-<%
-            }
-%>
+        <%    }
+        %>
     </body>
 </html>

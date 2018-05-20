@@ -169,6 +169,10 @@ and open the template in the editor.
                                                 }
                                             %>
                                         </select><br>
+                                        Tipo Empleado <select class="input" name="tipo" required>
+                                            <option value="Administrador">Administrador</option>
+                                            <option value="Cocinero">Cocinero</option>
+                                        </select><br>
                                         <input type="submit" value="Registrar Usuario" class="main-btn" name="registrar"></br>
                                     </form>
 

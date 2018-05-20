@@ -2,9 +2,9 @@
 <%@page import="conexiones.ConexionMySQL"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    if(session.getAttribute("usuario")== null){
+    if (session.getAttribute("usuario") == null) {
         response.sendRedirect("index.html");
-    }else{
+    } else {
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
         response.setHeader("Pragma", "no-cache");
         response.setDateHeader("Expires", 0);
@@ -85,6 +85,7 @@ and open the template in the editor.
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li><a href="#usuario">Usuario</a></li>
                         <li><a href="#producto">Producto</a></li>
+                        <li><a href="#pedido">Pedidos</a></li>
                         <li><a href="#opcionesvarias">Varios</a></li>
                         <li><a href="administracion.jsp">Registros</a></li>
                         <li><a href="logout.jsp">Cerrar Sesión</a></li>
@@ -105,7 +106,7 @@ and open the template in the editor.
                                 <h1 class="white-text">Datos de iCAFE</h1>
                                 <p class="white-text">¡Bienvenid@s a la sección de datos de iCAFE! En esta sección usted podrá visualizar los datos.
                                 </p>
-                                <button class="main-btn" OnClick="location.href='logout.jsp'">Cerrar Sesión</button>
+                                <button class="main-btn" OnClick="location.href = 'logout.jsp'">Cerrar Sesión</button>
                             </div>
                         </div>
                         <!-- /home content -->
@@ -151,6 +152,7 @@ and open the template in the editor.
                                                     <th scope="col">Usuario</th>
                                                     <th scope="col">Contraseña</th>
                                                     <th scope="col">Categoría Empleado</th>
+                                                    <th scope="col">Tipo Empleado</th>
                                                 </tr>
                                                 </thead>
                                                 <%
@@ -174,7 +176,8 @@ and open the template in the editor.
                                                     <td><%=rs.getString(8)%></td>
                                                     <td><%=rs.getString(9)%></td>
                                                     <td><%=rs.getString(10)%></td>
-                                                    <td><%=rs.getString(13)%></td>
+                                                    <td><%=rs.getString(14)%></td>
+                                                    <td><%=rs.getString(12)%></td>
                                                 </tr>
                                                 <%
                                                         }
@@ -261,7 +264,7 @@ and open the template in the editor.
                                                 <td><%=rs.getString(3)%></td>
                                                 <td>$ <%=rs.getString(4)%></td>
                                                 <td><%=rs.getString(5)%></td>
-                                                <td><%=rs.getString(9)%></td>
+                                                <td><%=rs.getString(10)%></td>
                                                 <td><%=rs.getString(7)%></td>
                                                 <td><img src="img/<%=rs.getString(8)%>" width="100" height="100"> </td>
                                             </tr>
@@ -310,6 +313,104 @@ and open the template in the editor.
 
                 </div>
                 <!-- /Producto -->
+
+                <!-- Pedidos -->
+                <div id="pedido" class="section md-padding">
+
+                    <!-- Container -->
+                    <div class="container">
+
+                        <!-- Row -->
+                        <div class="row">
+                            <!-- contact form -->
+                            <div class="text-center">
+                                <h2 class="title">Mostrar Pedidos</h2>
+                            </div>
+                            <!--/Nombre Producto-->
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Fecha</th>
+                                                <th scope="col">Hora</th>
+                                                <th scope="col">Cantidad</th>
+                                                <th scope="col">Cliente</th>
+                                                <th scope="col">Producto</th>
+                                                <th scope="col">Estado</th>
+                                            </tr>
+                                            </thead>
+                                            <%
+                                                sql = "SELECT * FROM pedido INNER JOIN producto ON pedido.producto_idProducto = producto.idProducto";
+                                                try {
+                                                    st = conn.createStatement();
+                                                    ResultSet rs = st.executeQuery(sql);
+                                                    while (rs.next()) {
+                                            %>  
+                                            <tr>
+                                                <td><%=rs.getString(1)%></td>
+                                                <td><%=rs.getString(2)%></td>
+                                                <td><%=rs.getString(3)%></td>
+                                                <td><%=rs.getString(4)%></td>
+                                                <td><%=rs.getString(5)%></td>
+                                                <td><%=rs.getString(9)%></td>
+                                                <%
+                                                    String estado = "";
+                                                    if (Integer.parseInt(rs.getString(7)) == 0) {
+                                                        estado = "En cocina";
+                                                    }else{
+                                                        estado = "Entregado";
+                                                    }
+                                                %>
+                                                <td><%=estado%></td>
+                                            </tr>
+                                            <%
+                                                    }
+                                                } catch (SQLException ex) {
+                                                    ex.printStackTrace();
+                                                }
+                                            %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <form class="contact-form" method="post">
+                                    <input type="hidden" value="6" name="num">
+                                    Id Pedido <select class="input" name="IdPedido" required>
+                                        <%
+                                            sql = "SELECT idPedido FROM pedido";
+                                            try {
+                                                st = conn.createStatement();
+                                                ResultSet rs = st.executeQuery(sql);
+                                                while (rs.next()) {
+                                        %>
+                                        <option value="<%=rs.getInt(1)%>"><%=rs.getString(1)%></option>;
+                                        <%
+                                                }
+                                            } catch (SQLException ex) {
+                                                ex.printStackTrace();
+                                            }
+                                        %>
+                                    </select><br>
+                                    <input type="submit" value="Eliminar Pedido" class="main-btn" name="eliminar" formaction="eliminar.jsp">  
+                                    <!--<input type="submit" value="Modificar Pedido" class="main-btn" name="modusuario" formaction="mostraractualizar.jsp"></br>-->                      
+                                </form>
+                                <!-- Fin al formulario para seleccionar el id de lo que se actualizará-->
+
+
+
+                            </div>
+                            <!-- /contact form -->
+
+                        </div>
+                        <!-- /Row -->
+
+                    </div>
+                    <!-- /Container -->
+
+                </div>
+                <!-- /Pedidos -->
 
                 <!-- Opciones Varias -->
                 <div id="opcionesvarias" class="section md-padding">
@@ -494,9 +595,9 @@ and open the template in the editor.
                     <!-- /footer logo -->
 
                     <!-- footer follow -->
-                        <ul class="footer-follow">
-                            <li><a href="https://www.facebook.com/icafesv/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                        </ul>
+                    <ul class="footer-follow">
+                        <li><a href="https://www.facebook.com/icafesv/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    </ul>
                     <!-- /footer follow -->
 
                     <!-- footer copyright -->

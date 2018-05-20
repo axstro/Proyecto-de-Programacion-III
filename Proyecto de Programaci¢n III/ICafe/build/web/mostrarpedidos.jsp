@@ -1,6 +1,13 @@
 <%@page import="controllers.ControladorPedido"%>
 <%
     controllers.ControladorPedido dc = new ControladorPedido();
+    if (session.getAttribute("usuario") == null) {
+        response.sendRedirect("index.html");
+    } else {
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
+    }
 %>
 <!DOCTYPE html>
 <html lang="en" >
@@ -62,7 +69,10 @@
                         </div>
                         <!-- /Collapse nav button -->
                     </div>
-
+                    
+                    <ul class="main-nav nav navbar-nav navbar-right">
+                        <li><a href="logout.jsp">Cerrar Sesión</a></li>
+                    </ul>
 
                     <!-- /Main navigation -->
 
@@ -141,18 +151,12 @@
                         <!-- footer follow -->
                         <ul class="footer-follow">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
                         </ul>
                         <!-- /footer follow -->
 
                         <!-- footer copyright -->
                         <div class="footer-copyright">
                             <p>iCafé 2018. All Rights Reserved. <!-- <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
-                                <br><br><a href="login.html"> Si eres un administrador da clic aquí</a></p>
                         </div>
                         <!-- /footer copyright -->
 

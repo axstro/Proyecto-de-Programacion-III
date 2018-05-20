@@ -28,11 +28,13 @@
             String usuario = request.getParameter("usuario");
             String contra = request.getParameter("contra");
             int categoria = Integer.parseInt(request.getParameter("categoria"));
+            String tipo = request.getParameter("tipo");
+            
 
             ConexionMySQL conexion = new ConexionMySQL();
             Connection conn = conexion.getConexion();
             Statement st;
-            String sql = "INSERT INTO usuario(nombres, apellidos, dui, nit, tel1, tel2, direccion, usuario, contraseña, catempleado_idcatempleado) VALUES ('" + nombres + "','" + apellidos + "','" + dui + "','" + nit + "','" + tel1 + "','" + tel2 + "','" + direccion + "','" + usuario + "','" + contra + "', " + categoria + ")";
+            String sql = "INSERT INTO usuario(nombres, apellidos, dui, nit, tel1, tel2, direccion, usuario, contraseña, catempleado_idcatempleado, tipo) VALUES ('" + nombres + "','" + apellidos + "','" + dui + "','" + nit + "','" + tel1 + "','" + tel2 + "','" + direccion + "','" + usuario + "','" + contra + "', " + categoria + ",'" + tipo + "')";
             try {
                 st = conn.createStatement();
                 st.executeUpdate(sql);

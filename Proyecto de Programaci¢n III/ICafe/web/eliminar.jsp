@@ -59,6 +59,18 @@
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+            } else if (id == 6) {
+                int pedido = Integer.parseInt(request.getParameter("IdPedido"));
+
+                sql = "DELETE FROM pedido where idPedido=" + pedido;
+                try {
+                    st = conn.createStatement();
+                    st.executeUpdate(sql);
+                    conn.close();
+                    st.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             } else if (id == 4) {
                 int promocion = Integer.parseInt(request.getParameter("IdPromocion"));
 

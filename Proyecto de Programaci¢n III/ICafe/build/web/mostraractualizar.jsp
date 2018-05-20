@@ -175,7 +175,10 @@
 
                                                             %>
                                                         </select><br>
-
+                                                        Tipo Empleado <select class="input" name="tipo" required>
+                                                            <option value="Administrador">Administrador</option>
+                                                            <option value="Cocinero">Cocinero</option>
+                                                        </select><br>
                                                         <input type="submit" value="Actualizar Usuario" class="main-btn" name="registrar"></br>
                                                     </form>
                                                     <%                                            }
@@ -205,7 +208,7 @@
                                                         <input type="text" name="cantidad" class="input" value="<%= rs.getString(5)%>" required>
                                                         <img src="img/<%=rs.getString(8)%>" width="200" height="200">
                                                         <input type="file" name="imagen" src="<%=rs.getString(8)%>" accept=".jpg, .jpeg, .png"> 
-                                                        
+
                                                         <%
                                                                 }
                                                             } catch (SQLException ex) {
@@ -235,7 +238,7 @@
                                                             <option value="Normal">Normal</option>
                                                             <option value="Promocion">Promoción</option>
                                                         </select><br><br>
-                                                        
+
                                                         <input type="submit" value="Actualizar Producto" class="main-btn">
                                                     </form>
                                                     <!-- Fin a la creación del formulario Actualizar Producto-->

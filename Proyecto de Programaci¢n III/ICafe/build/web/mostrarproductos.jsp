@@ -59,7 +59,6 @@
                     </div>
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li><a href="#Menu">Menu</a></li>
-                        <li><a href="#Promociones">Promociones</a></li>
                         <!-- /Main navigation -->
                     </ul>
                 </div>                

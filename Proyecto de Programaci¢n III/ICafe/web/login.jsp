@@ -30,7 +30,11 @@
                 ResultSet rs = st.executeQuery(sql);
                 if (rs.next()) {
                     session.setAttribute("usuario", user);
-                    response.sendRedirect("administracion.jsp");
+                    if (rs.getString(12).equals("Administrador")) {
+                        response.sendRedirect("administracion.jsp");
+                    } else {
+                        response.sendRedirect("mostrarpedidos.jsp");
+                    }
                 } else {
         %>
         <script>
