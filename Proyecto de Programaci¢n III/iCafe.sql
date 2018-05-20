@@ -162,7 +162,7 @@ INSERT INTO `usuario` (`idUsuario`, `nombres`, `apellidos`, `dui`, `nit`, `tel1`
   (3,'Alexander','Castro','05464772-3','0608-241296-102-0','7666-3525','2310-0796','Quezaltepeque','alex','alex1234',1,'Administrador'),
   (4,'Gerson','Blanco','05464721-4','0605-241123-101-1','7608-5771','2310-0791','Santa Tecla','gerson','gerson1234',1,'Administrador'),
   (5,'Lázaro','Hernández','05334772.3','0608-030596-102-0','7264-7733','2220-0296','San Salvador','lazaro','lazaro1234',1,'Administrador'),
-  (6,'Luis','Menéndez','09898989-9','0608-030596-102-0','7252-9674','2412-0000','Soyapango','luis','luis1234',1,'Administrador');
+  (6,'Luis','Menéndez','09898989-9','0608-030596-102-0','7252-9674','2412-0000','Soyapango','luis','luis1234',1,'Administrador'),
   (7,'Alan','Brito','09753525-2','0564-060991-154-1','7692-0987','2435-1657','San Salvador','cocinero','cocinero1234',1,'Cocinero');
 
 COMMIT;
