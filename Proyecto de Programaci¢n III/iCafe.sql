@@ -157,7 +157,7 @@ COMMIT;
 # Data for the `usuario` table  (LIMIT 0,500)
 #
 
-INSERT INTO `usuario` (`idUsuario`, `nombres`, `apellidos`, `dui`, `nit`, `tel1`, `tel2`, `direccion`, `usuario`, `contraseña`, `catempleado_idcatempleado`) VALUES 
+INSERT INTO `usuario` (`idUsuario`, `nombres`, `apellidos`, `dui`, `nit`, `tel1`, `tel2`, `direccion`, `usuario`, `contraseña`, `catempleado_idcatempleado`, `tipo`) VALUES 
   (2,'Paolo','Guerrero','03254753-2','0102-140998-101-2','7450-3596','7450-3597','Santa Tecla','paolo','paolo1234',1,'Administrador'),
   (3,'Alexander','Castro','05464772-3','0608-241296-102-0','7666-3525','2310-0796','Quezaltepeque','alex','alex1234',1,'Administrador'),
   (4,'Gerson','Blanco','05464721-4','0605-241123-101-1','7608-5771','2310-0791','Santa Tecla','gerson','gerson1234',1,'Administrador'),
