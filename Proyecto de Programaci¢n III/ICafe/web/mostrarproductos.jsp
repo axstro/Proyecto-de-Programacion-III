@@ -36,7 +36,7 @@
                 <div class="overlay"></div>
             </div>
             <!-- /Fondo -->
-
+            
             <!-- Navigator -->
             <nav id="nav" class="navbar nav-transparent">
                 <div class="container">
@@ -58,7 +58,7 @@
                         <!-- /Collapse nav button -->
                     </div>
                     <ul class="main-nav nav navbar-nav navbar-right">
-                        <li><a href="#Menu">Menu</a></li>
+                        <li><a href="index.html">Inicio</a></li>
                         <!-- /Main navigation -->
                     </ul>
                 </div>                
@@ -173,7 +173,7 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/owl.carousel.min.js"></script>
         <script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/main.js"></script> 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

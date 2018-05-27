@@ -1,7 +1,7 @@
 <%-- 
     Document   : actualizar
     Created on : 05-08-2018, 10:47:12 PM
-    Author     : axstr
+    Author     : icafe
 --%>
 
 <%@page import="java.sql.*"%>
