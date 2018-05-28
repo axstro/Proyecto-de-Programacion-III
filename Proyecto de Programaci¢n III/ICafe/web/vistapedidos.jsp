@@ -140,6 +140,7 @@
                                                                     <th scope="col">Cliente</th>
                                                                     <th scope="col">Producto</th>
                                                                     <th scope="col">Estado</th>
+                                                                    <th scope="col">Tiempo</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <%
@@ -147,9 +148,10 @@
                                                                     try {
                                                                         st = conn.createStatement();
                                                                         ResultSet rs = st.executeQuery(sql);
+                                                                        int i = 0;
                                                                         while (rs.next()) {
                                                                 %>  
-                                                                <tr>
+                                                                <tr id="registro<%=i%>">
                                                                     <td><%=rs.getString(1)%></td>
                                                                     <td><%=rs.getString(2)%></td>
                                                                     <td><%=rs.getString(3)%></td>
@@ -165,13 +167,58 @@
                                                                         }
                                                                     %>
                                                                     <td><%=estado%></td>
+                                                                    <td><div id="tiempo<%=i%>"></div></td>
                                                                 </tr>
+                                                            <script>
+                                                                var countDownDate<%=i%> = new Date("<%=rs.getString(2) + " " + rs.getString(3)%>").getTime();
+                                                                var x<%=i%> = setInterval(function () {
+
+                                                                    var now<%=i%> = new Date().getTime();
+                                                                    var distance<%=i%> = now<%=i%> - countDownDate<%=i%>;
+                                                                    var hours<%=i%> = Math.floor((distance<%=i%> % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                                    var minutes<%=i%> = Math.floor((distance<%=i%> % (1000 * 60 * 60)) / (1000 * 60));
+                                                                    var seconds<%=i%> = Math.floor((distance<%=i%> % (1000 * 60)) / 1000);
+                                                                    if (seconds<%=i%> < 10) {
+                                                                        seconds<%=i%> = "0" + seconds<%=i%>;
+                                                                    }
+                                                                    if (minutes<%=i%> < 10) {
+                                                                        minutes<%=i%> = "0" + minutes<%=i%>;
+                                                                    }
+                                                                    if (hours<%=i%> < 10) {
+                                                                        hours<%=i%> = "0" + hours<%=i%>;
+                                                                    }
+                                                                    document.getElementById("tiempo<%=i%>").innerHTML = hours<%=i%> + ":"
+                                                                            + minutes<%=i%> + ":" + seconds<%=i%>;
                                                                 <%
+                                                                    if (Integer.parseInt(rs.getString(7)) == 1) {
+                                                                %>
+                                                                    clearInterval(x<%=i%>);
+                                                                    document.getElementById("tiempo<%=i%>").innerHTML = "Entregado";
+                                                                    document.getElementById("registro<%=i%>").style.backgroundColor = "#baffc9";
+                                                                <%
+                                                                } else {
+                                                                %>
+                                                                    if (distance<%=i%> > 1799802) {
+                                                                        document.getElementById("registro<%=i%>").style.backgroundColor = "#ffb3ba";
+                                                                    } else {
+                                                                        if (distance<%=i%> > 599934) {
+                                                                            document.getElementById("registro<%=i%>").style.backgroundColor = "#ffdfba";
+                                                                        } else {
+                                                                            document.getElementById("registro<%=i%>").style.backgroundColor = "#ffffba";
                                                                         }
-                                                                    } catch (SQLException ex) {
-                                                                        ex.printStackTrace();
+                                                                    }
+                                                                <%
                                                                     }
                                                                 %>
+                                                                }, 1000);
+                                                            </script>
+                                                            <%
+                                                                        i++;
+                                                                    }
+                                                                } catch (SQLException ex) {
+                                                                    ex.printStackTrace();
+                                                                }
+                                                            %>
                                                             </tbody>
                                                         </table>
                                                     </div>            

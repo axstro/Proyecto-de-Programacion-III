@@ -1,3 +1,5 @@
+<%@page import="clases.pedido"%>
+<%@page import="models.ModeloPedido"%>
 <%@page import="controllers.ControladorPedido"%>
 <%
     controllers.ControladorPedido dc = new ControladorPedido();
@@ -41,7 +43,7 @@
     </head>
 
     <body>
-       <!-- Header -->
+        <!-- Header -->
         <header id="home">
             <!-- Fondo -->
             <div class="bg-img" style="background-image: url('./img/menu.jpg');">
@@ -69,7 +71,7 @@
                         </div>
                         <!-- /Collapse nav button -->
                     </div>
-                    
+
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li><a href="logout.jsp">Cerrar Sesión</a></li>
                     </ul>
@@ -117,8 +119,39 @@
                             <h2 class="title">Pedidos</h2>
                         </div>
                         <!-- /Section header -->
-                        
+
                         <%= dc.getPedidos()%>
+                        <%
+                            ModeloPedido md = new ModeloPedido();
+                            int i = 0;
+                            for (pedido pedido : md.getAllPedidos()) {
+                        %>
+                        <script>
+                            var countDownDate<%=i%> = new Date("<%=pedido.getFecha() + " " + pedido.getHora()%>").getTime();
+                            var x<%=i%> = setInterval(function () {
+
+                                var now<%=i%> = new Date().getTime();
+                                var distance<%=i%> = now<%=i%> - countDownDate<%=i%>;
+                                var hours<%=i%> = Math.floor((distance<%=i%> % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                var minutes<%=i%> = Math.floor((distance<%=i%> % (1000 * 60 * 60)) / (1000 * 60));
+                                var seconds<%=i%> = Math.floor((distance<%=i%> % (1000 * 60)) / 1000);
+                                if (seconds<%=i%> < 10) {
+                                    seconds<%=i%> = "0" + seconds<%=i%>;
+                                }
+                                if (minutes<%=i%> < 10) {
+                                    minutes<%=i%> = "0" + minutes<%=i%>;
+                                }
+                                if (hours<%=i%> < 10) {
+                                    hours<%=i%> = "0" + hours<%=i%>;
+                                }
+                                document.getElementById("tiempo<%=i%>").innerHTML = hours<%=i%> + ":"
+                                        + minutes<%=i%> + ":" + seconds<%=i%>;
+                            }, 1000);
+                        </script>
+                        <%
+                            i++;
+                            }
+                            %>
                     </div>
                 </div>
             </div>
@@ -131,7 +164,7 @@
 
 
 
-     <!-- Footer -->
+        <!-- Footer -->
         <footer id="footer" class="sm-padding bg-dark">
 
             <!-- Container -->
